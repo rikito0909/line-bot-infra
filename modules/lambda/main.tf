@@ -12,7 +12,7 @@ resource "aws_lambda_function" "this" {
   # environment {
   # }
 
-  depends_on = [aws_cloudwatch_log_group.lambda]
+  depends_on = [aws_cloudwatch_log_group.this]
 
   tags = {
     Name         = "${var.project_name}-${var.environment}-lambda"
@@ -78,6 +78,6 @@ resource "aws_iam_role_policy_attachment" "lambda_basic" {
 # 事前に作成しない場合、Lambda 初回実行時にデフォルト設定で自動作成される。
 # ==========================================
 resource "aws_cloudwatch_log_group" "this" {
-  name              = "/aws/lambda/${aws_lambda_function_function_name}"
+  name              = "/aws/lambda/${aws_lambda_function.this.function_name}"
   retention_in_days = 7
 }

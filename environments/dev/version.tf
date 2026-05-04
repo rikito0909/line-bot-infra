@@ -8,7 +8,7 @@ terraform {
   }
   backend "s3" {
     bucket  = "terraform-tfstate-linebot"
-    key     = "linebot/dev/terraform.tfvars"
+    key     = "linebot/dev/terraform.tfstate"
     region  = "ap-northeast-1"
     profile = "terraform"
   }
